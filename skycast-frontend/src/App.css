@@ -1,0 +1,306 @@
+/* App.css — SkyCast Final Glassified UI 🌗☀️🌙 */
+
+:root {
+  --primary-blue: #00c6ff;
+  --hover-blue: #00aee6;
+  --light-border: rgba(255, 255, 255, 0.2);
+  --accent-day: #ffaa4d;
+  --accent-day-hover: #ff8800;
+}
+
+/* 🌞 LIGHT THEME */
+body[data-theme='light'] {
+  --bg-color: rgba(255, 255, 255, 0.25);
+  --text-color: #2b2b2b;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --placeholder-color: #666;
+  --primary-blue: var(--accent-day);
+  --date-color: #444;
+}
+
+/* 🌙 DARK THEME */
+body[data-theme='dark'] {
+  --bg-color: rgba(0, 0, 0, 0.6);
+  --text-color: #f5f5f5;
+  --card-bg: rgba(10, 10, 20, 0.85);
+  --placeholder-color: rgba(255, 255, 255, 0.6);
+  --date-color: #dddddd;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background 0.5s ease-in-out;
+}
+
+.weather-app {
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 30px 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  width: 95%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔎 City AutoSuggest */
+.auto-suggest-box {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 16px;
+}
+
+.city-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: var(--text-color);
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.city-input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.suggestion-dropdown {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 10px;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.suggestion-dropdown li {
+  padding: 12px 18px;
+  color: var(--text-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.suggestion-dropdown li:hover,
+.suggestion-dropdown li.active {
+  background-color: rgba(0, 198, 255, 0.2);
+  color: var(--primary-blue);
+}
+
+/* 🌤️ WeatherCard */
+.weather-card {
+  margin-top: 20px;
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.6s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.weather-card h2,
+.weather-card p {
+  color: var(--text-color);
+}
+
+.weather-card img {
+  margin-top: 10px;
+  width: 120px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+/* Error */
+.error {
+  color: #ff4e4e;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+/* Loading Spinner */
+.loading {
+  margin-top: 20px;
+  font-size: 16px;
+  color: var(--text-color);
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* 📍 Location & Other Buttons */
+.weather-app button,
+.location-btn {
+  margin-top: 12px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid var(--light-border);
+}
+
+.weather-app button:hover,
+.location-btn:hover {
+  background-color: rgba(255, 184, 77, 0.2);
+  border-color: var(--accent-day);
+  color: var(--accent-day-hover);
+}
+
+/* 🔁 Recent Searches */
+.recent-searches {
+  margin-top: 30px;
+  max-width: 600px;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 26px 20px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--light-border);
+  text-align: center;
+  position: relative;
+  backdrop-filter: blur(12px);
+}
+
+.recent-searches h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.clear-history {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-color);
+  border: 1px solid var(--primary-blue);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.clear-history:hover {
+  background: rgba(255, 184, 77, 0.15);
+  color: var(--accent-day-hover);
+  border-color: var(--accent-day-hover);
+}
+
+.recent-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.recent-city {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--primary-blue);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.recent-city:hover {
+  background: rgba(255, 184, 77, 0.15);
+  color: var(--accent-day-hover);
+  border-color: var(--accent-day-hover);
+}
+
+/* 🌗 Theme Toggle */
+.theme-toggle {
+  margin-bottom: 16px;
+  padding: 8px 18px;
+  background: #ffffff22;
+  color: var(--text-color);
+  font-weight: 600;
+  border: 1px solid #ffffff33;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.theme-toggle:hover {
+  background: #ffffff44;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .weather-app {
+    padding: 24px 16px;
+    max-width: 95%;
+  }
+
+  .search-box,
+  .recent-tags {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recent-tags {
+    gap: 8px;
+  }
+
+  .weather-card {
+    padding: 18px;
+  }
+}

@@ -1,0 +1,83 @@
+.live-clock {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+  }
+  
+  .live-clock .time {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  
+  .live-clock .date {
+    font-size: 14px;
+    color: var(--date-color); /* 🔥 Uses the new smart theme var */
+    margin-bottom: 10px;
+  }
+  
+  .toggle-format {
+    padding: 6px 14px;
+    font-size: 13px;
+    background: #00e0ff;
+    color: #111;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .toggle-format:hover {
+    background: #00c8e0;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  /* LiveClock.css — Clock + Date Styling 🕒 */
+
+.live-clock {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.live-clock .time {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.live-clock .date {
+  font-size: 15px;
+  color: var(--date-color);
+  margin-top: 4px;
+}
+
+.toggle-format {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-color);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.toggle-format:hover {
+  background-color: rgba(255, 184, 77, 0.2);
+  color: var(--accent-day-hover);
+}
