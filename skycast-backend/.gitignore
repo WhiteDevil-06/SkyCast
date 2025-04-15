@@ -1,2 +1,5 @@
 .env
 node_modules
+
+/skycast-backend/node_modules
+/skycast-backend/.env
